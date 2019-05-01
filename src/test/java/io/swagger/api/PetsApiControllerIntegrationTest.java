@@ -25,21 +25,23 @@ public class PetsApiControllerIntegrationTest {
     @Test
     public void createPetTest() throws Exception {
         Pet body = new Pet();
+        body.setName("Purr");
+        body.setTag("cat");
         ResponseEntity<Void> responseEntity = api.createPet(body);
-        assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
+        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
     }
 
     @Test
     public void getPetByIdTest() throws Exception {
         Long petId = 789L;
         ResponseEntity<Pet> responseEntity = api.getPetById(petId);
-        assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
+        assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
     }
 
     @Test
     public void listPetsTest() throws Exception {
         ResponseEntity<Pets> responseEntity = api.listPets();
-        assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 
 }
