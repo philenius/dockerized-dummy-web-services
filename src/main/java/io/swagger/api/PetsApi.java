@@ -5,7 +5,7 @@
  */
 package io.swagger.api;
 
-import io.swagger.model.Error;
+import io.swagger.model.Pet;
 import io.swagger.model.Pets;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -23,37 +23,37 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-01T15:30:38.891Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-01T18:52:21.011Z[GMT]")
 @Api(value = "pets", description = "the pets API")
 public interface PetsApi {
 
-    @ApiOperation(value = "Create a pet", nickname = "createPets", notes = "", tags={ "pets", })
+    @ApiOperation(value = "Create a pet", nickname = "createPet", notes = "Add a new pet to the store", tags={ "pets", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "Null response"),
-        @ApiResponse(code = 200, message = "unexpected error", response = Error.class) })
+        @ApiResponse(code = 201, message = "Successfully created pet"),
+        @ApiResponse(code = 400, message = "Bad request") })
     @RequestMapping(value = "/pets",
-        produces = { "application/json" }, 
+        consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> createPets();
+    ResponseEntity<Void> createPet(@ApiParam(value = "Pet object that needs to be added to the store" ,required=true )  @Valid @RequestBody Pet body);
+
+
+    @ApiOperation(value = "Find pet by ID", nickname = "getPetById", notes = "Returns a single pet", response = Pet.class, tags={ "pets", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Successful operation", response = Pet.class),
+        @ApiResponse(code = 400, message = "Invalid ID supplied"),
+        @ApiResponse(code = 404, message = "Pet not found") })
+    @RequestMapping(value = "/pets/{petId}",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<Pet> getPetById(@ApiParam(value = "ID of pet to return",required=true) @PathVariable("petId") Long petId);
 
 
     @ApiOperation(value = "List all pets", nickname = "listPets", notes = "", response = Pets.class, tags={ "pets", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "A paged array of pets", response = Pets.class),
-        @ApiResponse(code = 200, message = "unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "Returns an array of all pets", response = Pets.class) })
     @RequestMapping(value = "/pets",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Pets> listPets(@ApiParam(value = "How many items to return at one time (max 100)") @Valid @RequestParam(value = "limit", required = false) Integer limit);
-
-
-    @ApiOperation(value = "Info for a specific pet", nickname = "showPetById", notes = "", response = Pets.class, tags={ "pets", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Expected response to a valid request", response = Pets.class),
-        @ApiResponse(code = 200, message = "unexpected error", response = Error.class) })
-    @RequestMapping(value = "/pets/{petId}",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<Pets> showPetById(@ApiParam(value = "The id of the pet to retrieve",required=true) @PathVariable("petId") String petId);
+    ResponseEntity<Pets> listPets();
 
 }

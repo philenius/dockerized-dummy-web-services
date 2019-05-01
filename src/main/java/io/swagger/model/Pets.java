@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * Pets
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-01T15:30:38.891Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-01T18:35:00.548Z[GMT]")
 public class Pets extends ArrayList<Pet>  {
 
   @Override

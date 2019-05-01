@@ -1,6 +1,6 @@
 package io.swagger.api;
 
-import io.swagger.model.Error;
+import io.swagger.model.Pet;
 import io.swagger.model.Pets;
 
 import java.util.*;
@@ -23,22 +23,22 @@ public class PetsApiControllerIntegrationTest {
     private PetsApi api;
 
     @Test
-    public void createPetsTest() throws Exception {
-        ResponseEntity<Void> responseEntity = api.createPets();
+    public void createPetTest() throws Exception {
+        Pet body = new Pet();
+        ResponseEntity<Void> responseEntity = api.createPet(body);
+        assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
+    }
+
+    @Test
+    public void getPetByIdTest() throws Exception {
+        Long petId = 789L;
+        ResponseEntity<Pet> responseEntity = api.getPetById(petId);
         assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }
 
     @Test
     public void listPetsTest() throws Exception {
-        Integer limit = 56;
-        ResponseEntity<Pets> responseEntity = api.listPets(limit);
-        assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
-    }
-
-    @Test
-    public void showPetByIdTest() throws Exception {
-        String petId = "petId_example";
-        ResponseEntity<Pets> responseEntity = api.showPetById(petId);
+        ResponseEntity<Pets> responseEntity = api.listPets();
         assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }
 
