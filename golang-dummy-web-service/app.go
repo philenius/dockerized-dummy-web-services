@@ -47,5 +47,5 @@ func homeHandler(writer http.ResponseWriter, request *http.Request) {
         log.Println("failed to retrieve hostname", err.Error())
     }
     writer.Header().Set("Content-Type", "application/json")
-    writer.Write([]byte(fmt.Sprintf("{ \"hostname\": \"%s\", \"MY_ENV_VAR\": \"%s\" }", hostname, os.Getenv("MY_ENV_VAR"))))
+    writer.Write([]byte(fmt.Sprintf("{ \"hostname\": \"%s\", \"MY_ENV_VAR\": \"%s\" }\n", hostname, os.Getenv("MY_ENV_VAR"))))
 }
