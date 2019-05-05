@@ -9,6 +9,8 @@ This web service listens per default on port 8081. The port can be configured th
 **HTTP Endpoints:**
 
 * `GET /`
+* `GET /health`
+* `GET /shutdown`
 
 **Docker image:**
 `philenius/golang-dummy-web-service`
