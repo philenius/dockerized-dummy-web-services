@@ -25,7 +25,9 @@ This web service listens per default on port 8080. The port can be configured th
 * `GET /v1/pets`
 * `GET /v1/pets/{petId}`
 * `POST /v1/pets`
-* See Swagger UI or API spec for further details.
+* `GET /health`
+* `GET /shutdown`
+See Swagger UI or API spec for further details.
 
 **Docker image:**
 `philenius/petstore-dummy-spring-boot`

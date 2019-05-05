@@ -65,6 +65,34 @@ paths:
           description: Invalid ID supplied
         404:
           description: Pet not found
+  /health:
+    get:
+      summary: Report the health status of this app
+      operationId: health
+      tags:
+        - operations
+      responses:
+        200:
+          description: Application healthy
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: OK
+  /shutdown:
+    get:
+      summary: Manually trigger a shutdown of this app with a preconfigured delay
+      operationId: shutdown
+      tags:
+        - operations
+      responses:
+        200:
+          description: Application is shutting down
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: shutting down in 10 seconds
 components:
   schemas:
     Pet:
