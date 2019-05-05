@@ -22,7 +22,7 @@ router.get('/', function (req, res, next) {
 
   setTimeout(() => {
     console.log('shutting down');
-    process.exit();
+    process.exit(1);
   }, remainingSec * 1000);
 
 });
