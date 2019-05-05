@@ -27,3 +27,14 @@ This web service listens per default on port 8080. The port can be configured th
 
 **Docker image:**
 `philenius/petstore-dummy-spring-boot`
+
+## Node / ExpressJS
+
+The directory `node-expressjs-dummy-web-app` contains a dummy web app that provides a website with memes. The server was generated using the NPM package `express-generator`.
+This web app listens per default on port 3000. The port can be configured through the environment variable `SERVER_PORT`. This app can either serve cat or dog memes. This behaviour can be configured through setting the environment variable `MEMEBOOK_VARIANT` to the value `dogs` respectively `cats`.
+
+**HTTP Endpoints:**
+* `GET /`
+
+**Docker image:**
+`philenius/memebook-dummy-node-expressjs`

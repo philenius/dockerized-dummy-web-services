@@ -1,0 +1,64 @@
+@font-face {
+  font-family: "Klavika Bold";
+  src: url(../KlavikaBoldOSF.otf);
+}
+
+button.no-color {
+  background-color: white;
+  border-color: white;
+}
+
+span.thumbs-text, span.counter {
+  margin-left: 0.5rem;
+}
+
+button.thumbs-down, button.thumbs-up {
+  padding: 0.2rem;
+}
+button.thumbs-down:hover, button.thumbs-up:hover {
+  background-color: white;
+  border-color: white;
+}
+
+button.thumbs-down:focus, button.thumbs-up:focus {
+  background-color: white;
+  border-color: white;
+  box-shadow: none;
+}
+
+div.card {
+  margin-top: 1rem;
+  height: 26rem;
+  position: absolute;
+}
+
+div.card-body {
+  padding: 1rem;
+  position: absolute;
+  top: 18rem;
+  width: 100%;
+}
+
+p.card-text {
+  margin-bottom: 0.1rem;
+}
+
+div.video-container {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 18rem;
+  top: 0;
+  bottom: 0;
+}
+
+video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+div.col-xl-4, div.col-sm-6 {
+  height: 28rem;
+}

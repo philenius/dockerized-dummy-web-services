@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  nav(class='navbar navbar-light bg-light' style='background-color: #3b5998 !important; font-family: Klavika Bold; text-transform: lowercase')
+    div(class='container')
+      div(class='row')
+        div(class='col-s-12')
+          a(class='navbar-brand text-white' href='#' style='font-size: 2rem') #{title}
+  div(class='container')
+
+    div(class='row' style='margin: 2rem 0rem')
+
+      for meme in memes
+        div(class='col-xl-4 col-sm-6')
+
+          div(class='card' style='width: 18rem')
+            div(class='video-container')
+              video(autoplay muted loop width= meme.width)
+                source(src= meme.src class='card-img-top' type='video/mp4')
+            div(class='card-body')
+              p(class='card-text') #{meme.description}
+              button(type='button' class='btn btn-light no-color thumbs-up')
+                i(class='far fa-thumbs-up')
+              button(type='button' class='btn btn-light no-color thumbs-down')
+                i(class='far fa-thumbs-down')
+              span(class='counter') #{meme.likes}
