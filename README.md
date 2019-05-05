@@ -35,6 +35,8 @@ This web app listens per default on port 3000. The port can be configured throug
 
 **HTTP Endpoints:**
 * `GET /`
+* `GET /health`
+* `GET /shutdown`
 
 **Docker image:**
 `philenius/memebook-dummy-node-expressjs`
