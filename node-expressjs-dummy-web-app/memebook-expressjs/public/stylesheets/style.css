@@ -3,6 +3,20 @@
   src: url(../KlavikaBoldOSF.otf);
 }
 
+nav.navbar {
+  background-color: #3b5998 !important;
+  font-family: Klavika Bold;
+  text-transform: lowercase;
+}
+
+a.navbar-brand {
+  font-size: 2rem;
+}
+
+div#memes {
+  margin: 2rem 0rem;
+}
+
 button.no-color {
   background-color: white;
   border-color: white;
@@ -28,6 +42,7 @@ button.thumbs-down:focus, button.thumbs-up:focus {
 
 div.card {
   margin-top: 1rem;
+  width: 18rem;
   height: 26rem;
   position: absolute;
 }
