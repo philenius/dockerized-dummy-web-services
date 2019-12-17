@@ -28,12 +28,35 @@
             <div class="column column-50">
 
                 <h1>Current Health Status</h1>
-                <pre><code id="current-health"></code></pre>
-                <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="#9b4dca" id="loader" style="position: absolute; top: 6rem; right: 0.5rem; display: none">
-                    <g fill="none" fill-rule="evenodd" stroke-width="2">
-                        <circle cx="22" cy="22" r="2" fill="#9b4dca"></circle>
-                    </g>
-                </svg>
+                <div style="display: flex; flex-direction: row; flex-wrap: wrap">
+                    <div style="flex: 1 0 80%">
+                        <pre><code id="current-health"></code></pre>
+                    </div>
+                    <div style="flex: 1 0 20%; margin-top: 1rem">
+                        <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"
+                            stroke="#9b4dca" id="loader1">
+                            <g fill="none" fill-rule="evenodd" stroke-width="2">
+                                <circle cx="22" cy="22" r="2" fill="#9b4dca"></circle>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+
+                <h1>Hostname</h1>
+                <div style="display: flex; flex-direction: row; flex-wrap: wrap">
+                    <div style="flex: 1 0 80%">
+                        <pre><code id="hostname"></code></pre>
+                    </div>
+                    <div style="flex: 1 0 20%; margin-top: 1rem">
+                        <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"
+                            stroke="#9b4dca" id="loader2">
+                            <g fill="none" fill-rule="evenodd" stroke-width="2">
+                                <circle cx="22" cy="22" r="2" fill="#9b4dca"></circle>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -41,16 +64,30 @@
 
     <script>
         setInterval(fetchHealthStatus, 1000);
+        setInterval(fetchHostname, 1000);
 
         function fetchHealthStatus() {
             fetch('/health'
             ).then(response => response.json()
             ).then(jsonData => {
-                document.getElementById('loader').style.display = 'block';
+                document.getElementById('loader1').style.display = 'block';
                 setTimeout(() => {
-                    document.getElementById('loader').style.display = 'none';
+                    document.getElementById('loader1').style.display = 'none';
                 }, 200);
                 document.getElementById('current-health').innerHTML = JSON.stringify(jsonData);
+            }).catch(err => {
+            });
+        }
+
+        function fetchHostname() {
+            fetch('/info'
+            ).then(response => response.json()
+            ).then(jsonData => {
+                document.getElementById('loader2').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('loader2').style.display = 'none';
+                }, 200);
+                document.getElementById('hostname').innerHTML = jsonData.hostname;
             }).catch(err => {
             });
         }
